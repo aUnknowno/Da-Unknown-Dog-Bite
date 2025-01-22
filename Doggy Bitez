@@ -1,0 +1,85 @@
+from fpdf import FPDF
+
+# Initialize PDF
+pdf = FPDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.add_page()
+
+# Title
+pdf.set_font("Arial", 'B', 16)
+pdf.cell(200, 10, txt="Cybersecurity Demonstration Code - Teaching Sheet", ln=True, align="C")
+pdf.ln(10)
+
+# Add code with descriptions on the side
+pdf.set_font("Courier", size=10)
+code_lines = [
+    ("# Main.py - Full Framework", "The main script to run the entire demo"),
+    ("import payload_module", "Imports the payload module, which will handle attack strategies"),
+    ("import monitor_module", "Imports the monitoring module to capture network activity"),
+    ("import visual_module", "Imports the visual dashboard for real-time feedback"),
+    ("import hidden_widget_module", "Imports hidden widget functionalities for advanced tricks"),
+    ("def start_payload():", "Function to initiate the payload execution"),
+    ("payload_module.execute()", "Executes the payload, launching the attack"),
+    ("def start_monitoring():", "Function to start the network monitoring process"),
+    ("monitor_module.start()", "Starts monitoring for network data like OTPs or cookies"),
+    ("def display_visuals():", "Displays a dashboard showing the status of the attack"),
+    ("visual_module.create_dashboard()", "Creates a GUI dashboard showing live updates"),
+    ("def display_hidden_widget():", "Displays hidden widgets or wallet interactions"),
+    ("hidden_widget_module.create_widget()", "Executes the creation of the hidden widget"),
+    ("if __name__ == '__main__':", "The entry point of the program"),
+    ("print('[*] Starting attack sequence...')", "Shows a message indicating the attack is starting"),
+    ("start_payload()", "Starts the payload process"),
+    ("start_monitoring()", "Starts the monitoring process"),
+    ("display_visuals()", "Displays the visual dashboard"),
+    ("display_hidden_widget()", "Displays the hidden widget"),
+    ("# Payload_Module.py", "Defines the different types of payloads that will be executed"),
+    ("def execute():", "Function that handles the payload execution"),
+    ("print('[*] Payload executed successfully...')", "Prints confirmation that the payload was triggered"),
+    ("# Insert reverse shell or other RAT here for persistence on Windows", "Placeholder for the Windows payload (reverse shell or RAT)"),
+    ("# Insert Android APK payload here", "Placeholder for Android-specific payload"),
+    ("# Insert browser hijack or cookie steal here", "Placeholder for browser-specific attacks like cookie stealing"),
+    ("# Insert RAT that can affect both systems and networks", "General payload that interacts with various systems"),
+    ("print('[*] Payload ready for remote control...')", "Indicates the payload is set up for remote control"),
+    ("# Monitor_Module.py", "Handles network sniffing and OTP/key logging"),
+    ("def start():", "Function to begin monitoring the system and network traffic"),
+    ("print('[*] Monitoring system... Waiting for next step...')", "Indicates that monitoring has begun"),
+    ("# Add logic to sniff packets for OTP, session cookies, etc.", "Add code to capture sensitive information from the target system"),
+    ("# Add logic to capture key presses", "Logs any keystrokes from the target system"),
+    ("# Add code to grab session cookies or authenticate tokens from browser", "Sniffs for browser session data"),
+    ("print('[*] Monitoring ongoing...')", "Indicates that the monitoring process is continuing"),
+    ("# Visual_Module.py", "Creates a visual dashboard for real-time feedback"),
+    ("import tkinter as tk", "Imports the tkinter library to create GUI elements"),
+    ("def create_dashboard():", "Function to create the visual dashboard for the demo"),
+    ("root = tk.Tk()", "Initializes the tkinter window for the GUI"),
+    ("root.title('Cybersecurity Demo - Hack the Planet')", "Sets the window title"),
+    ("label = tk.Label(root, text='[*] Attack in progress...', font=('Arial', 16))", "Displays a text message indicating the attack is in progress"),
+    ("label.pack(padx=20, pady=20)", "Adds the label to the GUI window"),
+    ("step1 = tk.Label(root, text='[*] Payload deployed', font=('Arial', 12))", "Label showing that the payload has been deployed"),
+    ("step1.pack(padx=20, pady=10)", "Adds the step1 label to the window"),
+    ("step2 = tk.Label(root, text='[*] Monitoring in action', font=('Arial', 12))", "Label showing monitoring is active"),
+    ("step2.pack(padx=20, pady=10)", "Adds the step2 label to the window"),
+    ("root.mainloop()", "Starts the GUI event loop"),
+    ("# Hidden_Widget_Module.py", "Handles the creation of hidden widgets for extra functionality"),
+    ("import tkinter as tk", "Imports tkinter to create the hidden widget GUI"),
+    ("def create_widget():", "Function to create and display the hidden widget"),
+    ("root = tk.Tk()", "Initializes the tkinter window for the hidden widget"),
+    ("root.withdraw()", "Hides the main window"),
+    ("hidden_window = tk.Toplevel(root)", "Creates a new window that will be hidden from the main view"),
+    ("hidden_window.title('Hidden Wallet/Widget')", "Sets the title for the hidden widget window"),
+    ("hidden_label = tk.Label(hidden_window, text='Accessing hidden wallet...', font=('Arial', 12))", "Displays text inside the hidden window"),
+    ("hidden_label.pack(padx=20, pady=10)", "Adds the label to the hidden window"),
+    ("print('[*] Accessing hidden widget...')", "Indicates that the hidden widget is being accessed"),
+    ("root.mainloop()", "Starts the event loop for the hidden widget window")
+]
+
+# Loop through and add each line of code with its description
+for code, description in code_lines:
+    pdf.cell(100, 10, code, border=1)
+    pdf.multi_cell(0, 10, description)
+    pdf.ln(2)
+
+# Save the PDF
+output_path = '/mnt/data/Cybersecurity_Demo_Teaching_Sheet.pdf'
+pdf.output(output_path)
+
+output_path  # Return the file path to the user for download
